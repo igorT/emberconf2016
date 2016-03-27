@@ -1,0 +1,20 @@
+<div>
+  {{#if isEditing}}
+    {{input value=cat.name}}
+    <button {{action 'save' cat}}>Update</button>
+  {{else}}
+    {{#link-to 'cat' cat}}
+      <h2>{{cat.name}}</h2>
+    {{/link-to}}
+    <button {{action 'edit' cat}}>Edit</button>
+    <div>owned by<h3>{{cat.ownerName}}</h3></div>
+  {{/if}}
+  <button {{action 'delete' cat}}>Remove {{cat.name}}</button>
+</div>
+<img src={{cat.image}} style="height:250px">
+{{#if hasFriends}}
+  <h3> Friends: </h3>
+  {{#each cat.catFriends as |friend|}}
+    I am friends with: {{friend.name}}
+  {{/each}}
+{{/if}}
