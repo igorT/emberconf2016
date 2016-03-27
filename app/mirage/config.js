@@ -12,6 +12,7 @@ export default function() {
   // this.timing = 400;      // delay for each request, automatically set to 0 during testing
     // Collections
   this.get('/cats');
+  this.get('/cats/:id');
   this.get('/dogs');
 
   /*

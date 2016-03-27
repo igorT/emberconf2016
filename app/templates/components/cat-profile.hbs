@@ -7,7 +7,7 @@
       <h2>{{cat.name}}</h2>
     {{/link-to}}
     <button {{action 'edit' cat}}>Edit</button>
-    <div>owned by<h3>{{cat.ownerName}}</h3></div>
+    <div>owned by<h3 class="owner-name">{{cat.ownerName}}</h3></div>
   {{/if}}
   <button {{action 'delete' cat}}>Remove {{cat.name}}</button>
 </div>

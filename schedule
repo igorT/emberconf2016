@@ -1,0 +1,95 @@
+Intro
+  Me
+  Them
+  Ember-Data Overwiew
+  IdentityMap
+  Store, Model, Serializer/Adapter,
+  Default Adapters, Serializers
+  Adapter Api, Serializer Api
+-> 20 min
+
+JqueryAjax(them)
+  Setup, JqueryAjax
+-> 5 min
+
+AdapterSetup/Ember-Cli(me)
+-> 3 min
+
+SimpleAdapterFindAll(me)
+  Implement adapter.findAll()
+
+SimpleAdapterFind(them)
+  Implement adapter.find()
+  Implement updateRecord
+  Implement deleteRecord
+  Implement createRecord
+
+More complex Data(me)
+  Normalize manually find
+  Normalize manually createRecord
+==============================================================
+Introduce the serializer(me)
+  Normalize the data
+
+Serialize the data(them)
+  Implement serialize for the serializer
+
+Add ApplicationAdapter(me)
+  Add the serializerFor
+  Add this.ajax
+  Add buildUrl
+
+Generic normalization/serialization(them)
+  Implement generic serialization for attributes
+  Iterate over attributes
+
+Relationships(me)
+  Format
+  Implement generic normalization for relationships
+
+Relationships(them)
+  Implement generic serialization for relationships
+
+Relationships
+ Links
+
+Serializer.attrs(me)
+  Serialize: false
+
+Serializer.attrs(them)
+  attrs for key
+
+Transforms(me)
+  Explain use
+  Add a Date Transform
+  Make Normalize transform work
+
+Transforms(them)
+  Serialize transforms
+
+=========================================================
+Error Handling(me):
+  Return errors
+  Invalid state
+
+Sideloading(me):
+  Explain benefits
+  Implement sideloading support for find
+  Be clear about making sure the correct adapter/serializer is called
+
+Move the extraction into the serializer
+
+Metadata:
+  Add an extraction for metadata
+
+Add serializeIntoHash
+
+FindMany:
+  Show feature
+  With custom urls show how to group
+
+========================================================
+Go through JSONSerializer, RESTSerializer
+=======================================================
+Showcase other Adapters
+=======================================================
