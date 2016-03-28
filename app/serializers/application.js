@@ -15,6 +15,12 @@ export default DS.Serializer.extend({
     snapshot.eachAttribute(function(name, meta) {
       serialized[this.keyForAttribute(name)] = snapshot.attr(name);
     }, this);
+    serialized.relationships = {};
+    snapshot.eachRelationship(function(name, meta) {
+      if (meta.kind === 'hasMany') {
+        serialized.relationships[this.keyForAttribute(name)] = snapshot.hasMany(name, { ids: true});
+      }
+    }, this);
     serialized.id = snapshot.id;
     return serialized;
   },
@@ -31,10 +37,19 @@ export default DS.Serializer.extend({
   },
 
   normalize(type, hash) {
-    let normalized = {};
+    let attributes = {};
     type.eachAttribute(function(name, meta) {
-      normalized[name] = hash[this.keyForAttribute(name)];
+      attributes[name] = hash[this.keyForAttribute(name)];
     }, this);
-    return { type: type.modelName, id: hash.id, attributes: normalized };
+    let relationships = {};
+    type.eachRelationship(function(name, meta) {
+      if (meta.kind === 'hasMany') {
+        relationships[name] = {
+          data: hash.relationships[this.keyForAttribute(name)].map((id) => ({ type: meta.type, id: id }))
+        };
+      }
+    }, this);
+
+    return { type: type.modelName, id: hash.id, attributes, relationships };
   }
 });
