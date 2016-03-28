@@ -15,5 +15,27 @@ export default ApplicationAdapter.extend({
       let catJSON = data.cat;
       return { data: { id: catJSON.id, type: 'cat', attributes: catJSON } };
     });
+  },
+
+  deleteRecord(store, type, snapshot) {
+    return Ember.$.ajax({
+      url:'/api/cats/' + snapshot.id,
+      type: 'DELETE'
+    }).then((data) => {
+      return null;
+    });
+  },
+
+  updateRecord(store, type, snapshot) {
+    let toSend = { cat: snapshot.attributes() };
+    toSend['cat'].id = snapshot.id;
+    return Ember.$.ajax({
+      url:'/api/cats/' + snapshot.id,
+      type: 'PUT',
+      data: JSON.stringify(toSend)
+    }).then((data) => {
+      return null;
+    });
   }
+
 });
