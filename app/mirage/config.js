@@ -21,6 +21,15 @@ export default function() {
   this.put('/dogs/:id');
   this.del('/dogs/:id');
 
+  this.get('catfriends/:id', function(db, request) {
+      var catId = +request.params.id;
+
+      var cat = db.cats.find(catId);
+      var catsToReturn = cat.relationships.cat_friends.map((friendId) => db.cats.find(friendId));
+      return {
+        cats: catsToReturn
+      };
+  });
   /*
     Route shorthand cheatsheet
   */
