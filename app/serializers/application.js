@@ -6,8 +6,15 @@ export default DS.Serializer.extend({
     return Ember.String.pluralize(type.modelName);
   },
 
+  keyForAttribute(key) {
+    return Ember.String.underscore(key);
+  },
+
   serialize(snapshot, options) {
-    let serialized = snapshot.attributes();
+    let serialized = {};
+    snapshot.eachAttribute(function(name, meta) {
+      serialized[this.keyForAttribute(name)] = snapshot.attr(name);
+    }, this);
     serialized.id = snapshot.id;
     return serialized;
   },
@@ -24,6 +31,10 @@ export default DS.Serializer.extend({
   },
 
   normalize(type, hash) {
-    return { type: type.modelName, id: hash.id, attributes: hash };
+    let normalized = {};
+    type.eachAttribute(function(name, meta) {
+      normalized[name] = hash[this.keyForAttribute(name)];
+    }, this);
+    return { type: type.modelName, id: hash.id, attributes: normalized };
   }
 });
