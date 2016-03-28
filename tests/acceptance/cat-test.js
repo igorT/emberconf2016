@@ -35,3 +35,11 @@ test('Correct cat age', function(assert) {
     assert.equal(find('.age').text(), '41', 'Cat has the correct age in cat years');
   });
 });
+
+test('Correct cat friends', function(assert) {
+  visit('/cat/1');
+
+  andThen(function() {
+    assert.equal($('.friends').text().trim().replace(/\s+/g, ' '), 'Friends: cat2 cat3', 'First cat is friends with cats one and three');
+  });
+});

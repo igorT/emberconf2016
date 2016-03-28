@@ -23,11 +23,18 @@ export default function() {
 
   this.get('catfriends/:id', function(db, request) {
       var catId = +request.params.id;
-
       var cat = db.cats.find(catId);
       var catsToReturn = cat.relationships.cat_friends.map((friendId) => db.cats.find(friendId));
       return {
         cats: catsToReturn
+      };
+  });
+
+  this.get('embeddedcats/:id', function(db, request) {
+      var cat = db.cats.find(+request.params.id);
+      cat.relationships.cat_friends = cat.relationships.cat_friends.map((friendId) => db.cats.find(friendId));
+      return {
+        cat: cat
       };
   });
   /*

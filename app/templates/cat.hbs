@@ -4,10 +4,12 @@
   <img src={{model.image}} style="height:250px">
   Owned by: <h2 class='owner'>{{model.ownerName}}</h2>
   Age: <h2 class='age'>{{model.realAge}}</h2>
+  <div class='friends'>
   <h3> Friends: </h3>
-  {{#each cat.catFriends as |friend|}}
-    I am friends with: {{friend.name}}
+  {{#each model.catFriends as |friend|}}
+    {{friend.name}}
   {{else}}
     No Friends :(
   {{/each}}
+  </div>
 </div>
