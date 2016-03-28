@@ -16,7 +16,7 @@ test('Data for the first cat', function(assert) {
 
   andThen(function() {
     let firstCat = find('.cat-profile')[0];
-    assert.equal($('h2', firstCat).text(), 'cat1', 'First cat is called cat1');
+    assert.equal($('h2', firstCat).text().trim(), 'cat1', 'First cat is called cat1');
     assert.equal($('.owner-name', firstCat).text(), 'Paul', 'Owner of the first cat is called Paul');
   });
 });
@@ -45,7 +45,7 @@ test('Can edit a cat', function(assert) {
   click('.update');
 
   andThen(function() {
-    assert.equal($('h2', firstCat).text(), 'BattleCat', 'First cat is called BattleCat now');
+    assert.equal($('h2', firstCat).text().trim(), 'BattleCat', 'First cat is called BattleCat now');
     assert.equal(server.db.cats[0].name, 'BattleCat', 'Server was updated with the correct name');
   });
 });
