@@ -6,6 +6,7 @@ export default DS.Model.extend({
   ownerName: DS.attr(),
   image: DS.attr(),
   age: DS.attr('number'),
+  catFriends: DS.hasMany('cat'),
   realAge: Ember.computed('age', function() {
     let age = this.get('age');
     if (age === 0 ) {

@@ -3,6 +3,9 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   cat: null,
   isEditing: false,
+  hasFriends: Ember.computed('cat.catFriends.[]', function() {
+    return this.get('cat.catFriends.length') > 0;
+  }),
   disableEdit: Ember.computed('canEdit', function(){
     return !this.get('canEdit');
   }),

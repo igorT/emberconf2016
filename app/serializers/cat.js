@@ -16,9 +16,18 @@ export default ApplicationSerializer.extend({
   },
 
   normalize(type, cat) {
-    let attributes = cat;
-    attributes.ownerName = attributes.owner_name;
-    let normalized = { type: type.modelName, attributes: cat, id:cat.id };
+    let attributes = {
+      ownerName: cat.owner_name,
+      name: cat.name,
+      age: cat.age,
+      image: cat.image
+    };
+    let relationships = {
+      catFriends: {
+        data: cat.relationships.cat_friends.map((friend) => ({ type: 'cat', id: friend }))
+      }
+    };
+    let normalized = { type: type.modelName, attributes, relationships, id:cat.id };
     return normalized;
   }
 });
