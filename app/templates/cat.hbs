@@ -1,15 +1,29 @@
 <div class="hello"> Hello I am CAT</div>
+<<<<<<< HEAD
 <div style="display:inline-block">
   <h2 class='name'>{{model.name}}</h2>
   <img src={{model.image}} style="height:250px">
   Owned by: <h2 class='owner'>{{model.ownerName}}</h2>
   Age: <h2 class='age'>{{model.age}}</h2>
+=======
+<div style="display:inline-block" class="content">
+  <h2 class='name title is-2'>{{model.name}}</h2>
+  <img src={{model.image}} style="height:250px" class="image">
+  <p>
+    Owned by: <h2 class='owner title is-5'>{{model.ownerName}}</h2>
+  </p>
+  <p>
+    Age: <h2 class='age title is-5'>{{model.realAge}}</h2>
+  </p>
+>>>>>>> 6e0d40c4ad9b17959929f8c9e589490843d0ecc1
   <div class='friends'>
-  <h3> Friends: </h3>
+    <h3> Friends: </h3>
+    <ul>
   {{#each model.catFriends as |friend|}}
-    {{friend.name}}
+  <li>{{friend.name}}</li>
   {{else}}
-    No Friends :(
+  <li>No Friends :(</li>
   {{/each}}
+    </ul>
   </div>
 </div>
