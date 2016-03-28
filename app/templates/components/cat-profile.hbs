@@ -1,20 +1,34 @@
-<div class="cat-profile">
-  {{#if isEditing}}
-    {{input value=cat.name}}
-    <button {{action 'save' cat}}>Update</button>
-  {{else}}
+<div class="cat-profile card">
+  <div class="card-content">
+
+    {{#if isEditing}}
+    <p class="control">
+      {{input value=cat.name class="input is-medium"}}
+    </p>
+    {{else}}
     {{#link-to 'cat' cat}}
-      <h2>{{cat.name}}</h2>
+    <h2 class="title is-4">{{cat.name}}</h2>
     {{/link-to}}
-    <button {{action 'edit' cat}}>Edit</button>
     <div>owned by<h3 class="owner-name">{{cat.ownerName}}</h3></div>
-  {{/if}}
-  <button class='delete' {{action 'delete' cat}}>Remove {{cat.name}}</button>
-</div>
-<img src={{cat.image}} style="height:250px">
-{{#if hasFriends}}
+    {{/if}}
+    <p class="control is-grouped">
+      {{#if isEditing}}
+      <button {{action 'save' cat}} class="button is-primary">Update</button>
+      {{else}}
+      <button {{action 'edit' cat}} class="button is-info is-outlined">Edit</button>
+      {{/if}}
+      <button class='delete button is-danger' {{action 'delete' cat}}>Remove {{cat.name}}</button>
+    </p>
+  </div>
+  <div class="card-image">
+    <figure class="image is-4by3">
+      <img src={{cat.image}} style="max-height:250px">
+    </figure>
+  </div>
+  {{#if hasFriends}}
   <h3> Friends: </h3>
   {{#each cat.catFriends as |friend|}}
-    I am friends with: {{friend.name}}
+  I am friends with: {{friend.name}}
   {{/each}}
-{{/if}}
+  {{/if}}
+</div>

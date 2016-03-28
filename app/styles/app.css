@@ -5,3 +5,17 @@
   border-bottom-color: transparent;
   color: #42afe3;
 }
+
+
+.delete {
+  user-select: auto;
+  background: auto;
+  border: auto;
+  border-radius: auto;
+  cursor: auto;
+  display: auto;
+  height: auto;
+  position: auto;
+  vertical-align: auto;
+  width: auto;
+}

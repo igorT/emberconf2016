@@ -1,3 +1,7 @@
-{{#each model as |cat|}}
-  {{cat-profile cat=cat}}
-{{/each}}
+<div class="columns is-multiline">
+  {{#each model as |cat|}}
+  <div class="column is-quarter">
+    {{cat-profile cat=cat}}
+  </div>
+  {{/each}}
+</div>
