@@ -59,3 +59,24 @@ test('Complex Boolean for dogs', function(assert) {
     assert.equal($('.likesCats', secondDog).length, 1, 'Second dog likes cats');
   });
 });
+
+test('Correct serialization of the dog attributes', function(assert) {
+  assert.expect(4);
+  visit('/dogs');
+  var firstDog;
+  server.put('/dogs/1', (db, request) => {
+    let savedDog = JSON.parse(request.requestBody).dog;
+    assert.equal(savedDog.name, 'Mr Dog', 'Correctly sent the name');
+    assert.equal(savedDog.age, 10, 'Correctly sent the age');
+    assert.equal(savedDog.plays_fetch, true, 'Correctly sent the fetch boolean');
+    assert.equal(savedDog.likes_cats, "false", 'Correctly sent the cats boolean');
+  });
+
+  andThen(function() {
+    firstDog = find('.dog-profile')[0];
+    click($('.edit', firstDog));
+  });
+
+  fillIn('input', 'Mr Dog');
+  click('.update');
+});

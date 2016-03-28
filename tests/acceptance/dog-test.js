@@ -8,13 +8,6 @@ test('visiting /dog', function(assert) {
 
   andThen(function() {
     assert.equal(currentURL(), '/dog/1');
-  });
-});
-
-test('Correct dog age', function(assert) {
-  visit('/dog/1');
-
-  andThen(function() {
-    assert.equal(find('.age').text(), '56', 'Dog has the correct age in dog years');
+    assert.equal(find('.name').text(), 'dog1', 'Name of the first dog is dog1');
   });
 });

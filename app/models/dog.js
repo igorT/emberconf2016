@@ -5,4 +5,5 @@ export default DS.Model.extend({
   image: DS.attr(),
   likesCats: DS.attr('boolean'),
   playsFetch: DS.attr('boolean'),
+  age: DS.attr()
 });
