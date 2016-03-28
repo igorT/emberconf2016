@@ -42,7 +42,7 @@ export default ApplicationSerializer.extend({
       },
     };
     if (cat.relationships.best_friend) {
-      relationships.bestFriend = { data: { type: 'cat', id: cat.relationships.best_friend } }
+      relationships.bestFriend = { data: { type: 'cat', id: cat.relationships.best_friend } };
     }
     let normalized = { type: type.modelName, attributes, relationships, id:cat.id };
     return normalized;
