@@ -7,7 +7,9 @@ export default DS.Serializer.extend({
   },
 
   serialize(snapshot, options) {
-
+    let serialized = snapshot.attributes();
+    serialized.id = snapshot.id;
+    return serialized;
   },
 
   normalizeResponse(store, type, data, id, requestType) {
