@@ -1,4 +1,5 @@
 PRINT API DOCS
+  Server expects namespaced
 PRINT TENTATIVE SCHEDULE
 BREAK APART TESTS
 AGE IN DOG AND CAT YEARS
@@ -35,7 +36,7 @@ SimpleAdapterFind(them)
   Implement createRecord
 
 Add ApplicationAdapter(me)
-  Add the serializerFor
+//  Add the serializerFor
   Add this.ajax
   Add buildUrl
 

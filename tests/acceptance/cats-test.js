@@ -32,3 +32,20 @@ test('Can delete a cat', function(assert) {
     assert.equal(server.db.cats.length, 5, 'Cat was succesfully deleted');
   });
 });
+
+test('Can edit a cat', function(assert) {
+  visit('/cats');
+  var firstCat;
+
+  andThen(function() {
+    firstCat = find('.cat-profile')[0];
+    click($('.edit', firstCat));
+  });
+  fillIn('input', 'BattleCat');
+  click('.update');
+
+  andThen(function() {
+    assert.equal($('h2', firstCat).text(), 'BattleCat', 'First cat is called BattleCat now');
+    assert.equal(server.db.cats[0].name, 'BattleCat', 'Server was updated with the correct name');
+  });
+});

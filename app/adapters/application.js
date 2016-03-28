@@ -26,9 +26,12 @@ export default DS.Adapter.extend({
   updateRecord(store, type, snapshot) {
     return $.ajax({
       method: 'PUT',
-      url: '/api/' + Ember.String.pluralize(type.modelName),
-      data: snapshot.serialize()
-    });
+      url: '/api/' + Ember.String.pluralize(type.modelName) + '/' + snapshot.id,
+      data: JSON.stringify({cat: {
+        id: snapshot.id,
+        name: snapshot.attr('name')
+      }})
+    }).then(function() { return null });
   },
 
   deleteRecord(store, type, snapshot) {
