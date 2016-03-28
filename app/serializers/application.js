@@ -32,8 +32,11 @@ export default DS.Serializer.extend({
   },
 
   serialize(snapshot, options) {
-    let serialized = snapshot.attributes();
+    let serialized = {};
     serialized.id = snapshot.id;
+   snapshot.eachAttribute(function(name, meta) {
+      serialized[Ember.String.underscore(name)] = snapshot.attr(name);
+    });
     return serialized;
   }
 
