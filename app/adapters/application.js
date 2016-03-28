@@ -13,7 +13,7 @@ export default DS.Adapter.extend({
   },
 
   findRecord(store, type, id, snapshot) {
-    return $.get('/api/' + Ember.String.pluralize(type.modelName)).then((data) => {
+    return $.get('/api/' + Ember.String.pluralize(type.modelName) + '/' + id).then((data) => {
       let key = Ember.String.pluralize(type.modelName);
       let cat = data[type.modelName];
       let normalized = { type: type.modelName, attributes: cat, id:cat.id };

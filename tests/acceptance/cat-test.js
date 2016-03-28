@@ -12,6 +12,15 @@ test('Basic Cat profile', function(assert) {
   });
 });
 
+test('Another Cat profile', function(assert) {
+  visit('/cat/2');
+
+  andThen(function() {
+    assert.equal(find('.hello').text(), ' Hello I am CAT', 'Cat says hi');
+    assert.equal(find('.name').text(), 'cat2', 'Name of the second cat is cat2');
+  });
+});
+
 test('Cat Owner Name', function(assert) {
   visit('/cat/1');
   andThen(function() {
