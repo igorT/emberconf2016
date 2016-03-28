@@ -1,4 +1,20 @@
-<h2 id="title">Welcome to Ember</h2>
-{{#link-to 'cats'}}See all the cats{{/link-to}}
-{{#link-to 'dogs'}}See all the dogs{{/link-to}}
-{{outlet}}
+<section class="hero is-info is-left is-bold">
+  <div class="container">
+
+    <h2 id="title" class="title">Welcome to Ember</h2>
+    <div class="hero-footer">
+      <nav class="tabs is-boxed">
+        <ul>
+          <li>{{#link-to 'cats'}}See all the cats{{/link-to}}</li>
+          <li>{{#link-to 'dogs'}}See all the dogs{{/link-to}}</li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    {{outlet}}
+  </div>
+</section>
