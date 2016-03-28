@@ -16,7 +16,11 @@ Intro
 
 JqueryAjax(them)
   Setup, JqueryAjax
+  JqueryAjax for cats and a single cat
+  JqueryAjax for dogs and a single dog
 -> 5 min
+
+See fail saving and age
 
 AdapterSetup/Ember-Cli(me)
 -> 3 min
