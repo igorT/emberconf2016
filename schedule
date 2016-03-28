@@ -34,6 +34,11 @@ SimpleAdapterFind(them)
   Implement deleteRecord
   Implement createRecord
 
+Add ApplicationAdapter(me)
+  Add the serializerFor
+  Add this.ajax
+  Add buildUrl
+
 More complex Data(me)
   Normalize manually find
   Normalize manually createRecord
@@ -43,11 +48,6 @@ Introduce the serializer(me)
 
 Serialize the data(them)
   Implement serialize for the serializer
-
-Add ApplicationAdapter(me)
-  Add the serializerFor
-  Add this.ajax
-  Add buildUrl
 
 Generic normalization/serialization(them)
   Implement generic serialization for attributes

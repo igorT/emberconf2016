@@ -14,6 +14,10 @@ export default function() {
   this.get('/cats');
   this.get('/cats/:id');
   this.get('/dogs');
+  this.get('/dogs/:id');
+
+  this.del('/cats/:id');
+  this.del('/dogs/:id');
 
   /*
     Route shorthand cheatsheet

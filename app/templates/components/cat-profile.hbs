@@ -9,7 +9,7 @@
     <button {{action 'edit' cat}}>Edit</button>
     <div>owned by<h3 class="owner-name">{{cat.ownerName}}</h3></div>
   {{/if}}
-  <button {{action 'delete' cat}}>Remove {{cat.name}}</button>
+  <button class='delete' {{action 'delete' cat}}>Remove {{cat.name}}</button>
 </div>
 <img src={{cat.image}} style="height:250px">
 {{#if hasFriends}}

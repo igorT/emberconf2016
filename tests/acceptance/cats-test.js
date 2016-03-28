@@ -20,3 +20,15 @@ test('Data for the first cat', function(assert) {
     assert.equal($('.owner-name', firstCat).text(), 'Paul', 'Owner of the first cat is called Paul');
   });
 });
+
+test('Can delete a cat', function(assert) {
+  visit('/cats');
+
+  andThen(function() {
+    let firstCat = find('.cat-profile')[0];
+    click($('.delete', firstCat));
+  });
+  andThen(function() {
+    assert.equal(server.db.cats.length, 5, 'Cat was succesfully deleted');
+  });
+});

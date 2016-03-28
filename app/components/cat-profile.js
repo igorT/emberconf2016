@@ -11,6 +11,11 @@ export default Ember.Component.extend({
       this.set('isEditing', true);
     },
 
+    delete: function() {
+      this.get('cat').deleteRecord();
+      this.get('cat').save();
+    },
+
    save: function(){
     this.get('cat').save();
     this.set('isEditing', false);
