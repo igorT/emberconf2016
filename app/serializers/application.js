@@ -6,6 +6,10 @@ export default DS.Serializer.extend({
     return Ember.String.pluralize(type.modelName);
   },
 
+  serialize(snapshot, options) {
+
+  },
+
   normalizeResponse(store, type, data, id, requestType) {
     if (requestType === 'findAll') {
       let jsonArray = data[this.keyForType(type)];
