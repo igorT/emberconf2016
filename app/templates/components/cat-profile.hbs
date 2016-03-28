@@ -6,15 +6,16 @@
       {{input value=cat.name class="input is-medium"}}
     </p>
     {{else}}
+    <h2 class="title is-4">
     {{#link-to 'cat' cat}}
-    <h2 class="title is-4">{{cat.name}}</h2>
+    {{cat.name}}
     {{/link-to}}
-    <button class='edit' {{action 'edit' cat}}>Edit</button>
+    </h2>
     <div>owned by<h3 class="owner-name">{{cat.ownerName}}</h3></div>
     {{/if}}
     <p class="control is-grouped">
       {{#if isEditing}}
-      <button {{action 'save' cat}} class="button is-primary">Update</button>
+      <button {{action 'save' cat}} class="button is-primary update">Update</button>
       {{else}}
       <button {{action 'edit' cat}} class="button is-info is-outlined edit">Edit</button>
       {{/if}}
