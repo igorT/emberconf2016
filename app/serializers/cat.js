@@ -15,6 +15,19 @@ export default ApplicationSerializer.extend({
     }
   },
 
+  serialize(snapshot, options) {
+    return {
+      owner_name: snapshot.attr('ownerName'),
+      name: snapshot.attr('name'),
+      age: snapshot.attr('age'),
+      relationships: {
+        cat_friends: snapshot.hasMany('catFriends', { ids: true }),
+        best_friend: snapshot.belongsTo('bestFriend', { id: true })
+      }
+    };
+  },
+
+
   normalize(type, cat) {
     let attributes = {
       ownerName: cat.owner_name,
@@ -25,8 +38,11 @@ export default ApplicationSerializer.extend({
     let relationships = {
       catFriends: {
         data: cat.relationships.cat_friends.map((friend) => ({ type: 'cat', id: friend }))
-      }
+      },
     };
+    if (cat.relationships.best_friend) {
+      relationships.bestFriend = { data: { type: 'cat', id: cat.relationships.best_friend } }
+    }
     let normalized = { type: type.modelName, attributes, relationships, id:cat.id };
     return normalized;
   }

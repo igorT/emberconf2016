@@ -12,15 +12,10 @@ export default DS.Adapter.extend({
 
   updateRecord(store, type, snapshot) {
     let key =  type.modelName === 'cat' ? 'cat' : 'dog';
-    let objToSend = {};
-    objToSend[key] = {
-        id: snapshot.id,
-        name: snapshot.attr('name')
-    };
     return $.ajax({
       method: 'PUT',
       url: '/api/' + Ember.String.pluralize(type.modelName) + '/' + snapshot.id,
-      data: JSON.stringify(objToSend)
+      data: JSON.stringify(snapshot.serialize())
       }).then(function() { return null; });
   },
 
