@@ -18,18 +18,11 @@ export default DS.Adapter.extend({
   },
 
   findAll(store, type) {
-    return Ember.$.get(this.baseURLForType(type)).then((data) => {
-      let jsonArray = data[this.keyForType(type)];
-      let normalized = { data: jsonArray.map((cat) => ({ type: type.modelName, id: cat.id, attributes:cat })) };
-      return normalized;
-    });
+    return Ember.$.get(this.baseURLForType(type));
   },
 
   findRecord(store, type, id) {
-    return Ember.$.get(this.baseURLForType(type) + id).then((data) => {
-      let catJSON = data[type.modelName];
-      return { data: { id: catJSON.id, type: type.modelName, attributes: catJSON } };
-    });
+    return Ember.$.get(this.baseURLForType(type) + id);
   },
 
   deleteRecord(store, type, snapshot) {
