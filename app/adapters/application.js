@@ -24,14 +24,17 @@ export default DS.Adapter.extend({
   },
 
   updateRecord(store, type, snapshot) {
+    let key =  type.modelName === 'cat' ? 'cat' : 'dog';
+    let objToSend = {};
+    objToSend[key] = {
+        id: snapshot.id,
+        name: snapshot.attr('name')
+    };
     return $.ajax({
       method: 'PUT',
       url: '/api/' + Ember.String.pluralize(type.modelName) + '/' + snapshot.id,
-      data: JSON.stringify({cat: {
-        id: snapshot.id,
-        name: snapshot.attr('name')
-      }})
-    }).then(function() { return null });
+      data: JSON.stringify(objToSend)
+      }).then(function() { return null; });
   },
 
   deleteRecord(store, type, snapshot) {

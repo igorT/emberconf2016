@@ -20,3 +20,21 @@ test('Data for the first dog', function(assert) {
     assert.equal($('.owner-name', firstDog).text(), 'Paul', 'Owner of the first dog is called Paul');
   });
 });
+
+test('Can edit a dog', function(assert) {
+  visit('/dogs');
+  var firstDog;
+
+  andThen(function() {
+    firstDog = find('.dog-profile')[0];
+    click($('.edit', firstDog));
+  });
+
+  fillIn('input', 'Mr Dog');
+  click('.update');
+
+  andThen(function() {
+    assert.equal($('h2', firstDog).text(), 'Mr Dog', 'First dog is called Mr Dog now');
+    assert.equal(server.db.dogs[0].name, 'Mr Dog', 'Server was updated with the correct name');
+  });
+});
