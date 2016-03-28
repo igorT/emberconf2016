@@ -1,27 +1,40 @@
-<div class="dog-profile">
-{{#if isEditing}}
-  <div>
-  Name:  {{input value=dog.name}}
-  </div>
-  <div>
-  Likes Cats:  {{input checked=dog.likesCats type='checkbox'}}
-  </div>
-  <div>
-  Plays Fetch:  {{input checked=dog.playsFetch type='checkbox'}}
-  </div>
-  <button class='update' {{action 'save' dog}}>Save</button>
-{{else}}
-  {{#link-to 'dog' dog}}
-    <h2 class='name'>{{dog.name}}</h2>
-  {{/link-to}}
-  {{#if dog.playsFetch}}
+<div class="dog-profile card">
+  <div class="card-content">
+    {{#if isEditing}}
+    <p class="control">
+      Name:  {{input value=dog.name class="input is-menium"}}
+    </p>
+    <p class="control">
+      <label class="checkbox">Likes Cats:  {{input checked=dog.likesCats type='checkbox' }}</label>
+    </p>
+    <p class="control">
+      <label class="checkbox">Plays Fetch:  {{input checked=dog.playsFetch type='checkbox'}}</label>
+    </p>
+    {{else}}
+    <h2 class='name title is-4'>
+      {{#link-to 'dog' dog}}
+      {{dog.name}}
+      {{/link-to}}
+    </h2>
+    {{#if dog.playsFetch}}
     <div><h3>I play fetch</h3></div>
-   {{/if}}
-  {{#if dog.likesCats}}
+    {{/if}}
+    {{#if dog.likesCats}}
     <div><h3>I like cats</h3></div>
-   {{/if}}
-  <button class='edit' {{action 'edit' dog}}>Edit</button>
-{{/if}}
-<button {{action 'delete' dog}}>Remove {{dog.name}}</button>
-<img src={{dog.image}} style="height:250px">
+    {{/if}}
+    {{/if}}
+    <p class="control is-grouped">
+      {{#if isEditing}}
+      <button {{action 'save' dog}} class="button is-primary update">Save</button>
+      {{else}}
+      <button {{action 'edit' edit}} class="button is-info is-outlined edit">Edit</button>
+      {{/if}}
+      <button class='delete button is-danger' {{action 'delete' dog}}>Remove {{dog.name}}</button>
+    </p>
+  </div>
+  <div class="card-image">
+    <figure class="image is-4by3">
+      <img src={{dog.image}} style="max-height:250px">
+    </figure>
+  </div>
 </div>

@@ -1,0 +1,21 @@
+.hero.is-info .tabs.is-boxed .active, .hero.is-info .tabs.is-boxed .active:hover{
+  opacity: 1;
+  background: white;
+  border-color: #d3d6db;
+  border-bottom-color: transparent;
+  color: #42afe3;
+}
+
+
+.delete {
+  user-select: auto;
+  background: auto;
+  border: auto;
+  border-radius: auto;
+  cursor: auto;
+  display: auto;
+  height: auto;
+  position: auto;
+  vertical-align: auto;
+  width: auto;
+}
