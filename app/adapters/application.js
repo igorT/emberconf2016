@@ -28,8 +28,7 @@ export default DS.Adapter.extend({
 
   updateRecord(store, type, snapshot) {
     let toSend = {};
-    toSend[type.modelName] = snapshot.attributes();
-    toSend[type.modelName].id = snapshot.id;
+    toSend[type.modelName] = snapshot.serialize();
     return Ember.$.ajax(this.baseURLFor(type) + snapshot.id, {
       type: 'PUT',
       data: JSON.stringify(toSend)
