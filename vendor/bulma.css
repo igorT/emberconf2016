@@ -2268,14 +2268,14 @@ table th {
   color: white;
 }
 
-.notification .delete, .notification .modal-close {
+.notification .modal-close {
   background: rgba(0, 0, 0, 0.2);
   border-radius: 0 3px;
   float: right;
   margin: -16px -20px 0 20px;
 }
 
-.notification .delete:hover, .notification .modal-close:hover {
+.notification .modal-close:hover {
   background: rgba(0, 0, 0, 0.5);
 }
 
@@ -2363,7 +2363,7 @@ table th {
   background: #ed6c63;
 }
 
-.delete, .modal-close {
+.modal-close {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -2382,7 +2382,7 @@ table th {
   width: 24px;
 }
 
-.delete:before, .modal-close:before, .delete:after, .modal-close:after {
+.modal-close:before, .modal-close:after {
   background: white;
   content: "";
   display: block;
@@ -2395,31 +2395,31 @@ table th {
   width: 50%;
 }
 
-.delete:before, .modal-close:before {
+.modal-close:before {
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
 }
 
-.delete:after, .modal-close:after {
+.modal-close:after {
   -webkit-transform: rotate(-45deg);
           transform: rotate(-45deg);
 }
 
-.delete:hover, .modal-close:hover {
+.modal-close:hover {
   background: #ed6c63;
 }
 
-.delete.is-small, .tag:not(.is-large) .delete, .tag:not(.is-large) .modal-close, .is-small.modal-close {
+.tag:not(.is-large) .modal-close, .is-small.modal-close {
   height: 16px;
   width: 16px;
 }
 
-.delete.is-medium, .is-medium.modal-close {
+.is-medium.modal-close {
   height: 32px;
   width: 32px;
 }
 
-.delete.is-large, .is-large.modal-close {
+.is-large.modal-close {
   height: 40px;
   width: 40px;
 }
@@ -2634,7 +2634,7 @@ table th {
   padding: 7px 14px 9px;
 }
 
-.tag:not(.is-large) .delete, .tag:not(.is-large) .modal-close {
+.tag:not(.is-large) .modal-close {
   margin-left: 4px;
   margin-right: -6px;
 }
@@ -2647,7 +2647,7 @@ table th {
   padding: 7px 18px 9px;
 }
 
-.tag.is-large .delete, .tag.is-large .modal-close {
+.tag.is-large .modal-close {
   margin-left: 4px;
   margin-right: -8px;
 }
