@@ -38,3 +38,11 @@ test('Can edit a dog', function(assert) {
     assert.equal(server.db.dogs[0].name, 'Mr Dog', 'Server was updated with the correct name');
   });
 });
+
+test('Booleans for the first dog', function(assert) {
+  visit('/dogs');
+
+  andThen(function() {
+    let firstDog = find('.dog-profile')[0];
+  });
+});
