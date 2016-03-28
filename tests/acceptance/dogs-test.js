@@ -17,7 +17,6 @@ test('Data for the first dog', function(assert) {
   andThen(function() {
     let firstDog = find('.dog-profile')[0];
     assert.equal($('h2', firstDog).text().trim(), 'dog1', 'First dog is called dog1');
-    assert.equal($('.owner-name', firstDog).text(), 'Paul', 'Owner of the first dog is called Paul');
   });
 });
 
@@ -39,10 +38,24 @@ test('Can edit a dog', function(assert) {
   });
 });
 
-test('Booleans for the first dog', function(assert) {
+test('Simple Boolean for dogs', function(assert) {
   visit('/dogs');
 
   andThen(function() {
     let firstDog = find('.dog-profile')[0];
+    assert.equal($('.playsFetch', firstDog).length, 1, 'First dog plays fetch');
+    let secondDog = find('.dog-profile')[1];
+    assert.equal($('.playsFetch', secondDog).length, 0, 'Second dog does not play fetch');
+  });
+});
+
+test('Complex Boolean for dogs', function(assert) {
+  visit('/dogs');
+
+  andThen(function() {
+    let firstDog = find('.dog-profile')[0];
+    assert.equal($('.likesCats', firstDog).length, 0, 'First dog does not like cats');
+    let secondDog = find('.dog-profile')[1];
+    assert.equal($('.likesCats', secondDog).length, 1, 'Second dog likes cats');
   });
 });
