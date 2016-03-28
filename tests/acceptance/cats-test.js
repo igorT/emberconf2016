@@ -49,3 +49,12 @@ test('Can edit a cat', function(assert) {
     assert.equal(server.db.cats[0].name, 'BattleCat', 'Server was updated with the correct name');
   });
 });
+
+test('Relationships for the first cat', function(assert) {
+  visit('/cats');
+
+  andThen(function() {
+    let firstCat = find('.cat-profile')[0];
+    assert.equal($('.friends', firstCat).text().trim().replace(/\s+/g, ' '), 'Friends: cat2 cat3', 'First cat is friends with cats one and three');
+  });
+});

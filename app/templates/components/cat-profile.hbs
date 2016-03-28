@@ -27,10 +27,12 @@
       <img src={{cat.image}} style="max-height:250px">
     </figure>
   </div>
-  {{#if hasFriends}}
-  <h3> Friends: </h3>
-  {{#each cat.catFriends as |friend|}}
-  I am friends with: {{friend.name}}
-  {{/each}}
-  {{/if}}
+  <div class='friends'>
+    {{#if hasFriends}}
+      <h3> Friends: </h3>
+      {{#each cat.catFriends as |friend|}}
+         {{friend.name}}
+      {{/each}}
+    {{/if}}
+  </div>
 </div>
