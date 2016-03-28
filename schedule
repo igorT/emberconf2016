@@ -45,30 +45,36 @@ More complex Data(me)
   Normalize manually createRecord
 ==============================================================
 Introduce the serializer(me)
-  Normalize the data
+  Normalize the attributes
 
 Serialize the data(them)
-  Implement serialize for the serializer
+  Implement serialize for the serializer for attributes manually
 
-Generic normalization/serialization(them)
-  Implement generic serialization for attributes
+Normalize the Relationships(me)
+
+Serialize the Relationships(them)
+
+Generic normalization(me)
+
+Implement generic serialization(them)
   Iterate over attributes
 
-Relationships(me)
-  Format
-  Implement generic normalization for relationships
+========================================================
+Go through JSONSerializer, RESTSerializer
+=======================================================
+Showcase other Adapters
+=======================================================
 
-Relationships(them)
-  Implement generic serialization for relationships
+==============================================================
+Problem sets
+
+1. Key renaming
+2. Don't serialize
+3. Custom links
+4. Embedded?
 
 Relationships
  Links
-
-Serializer.attrs(me)
-  Serialize: false
-
-Serializer.attrs(them)
-  attrs for key
 
 Transforms(me)
   Explain use
@@ -88,19 +94,7 @@ Sideloading(me):
   Implement sideloading support for find
   Be clear about making sure the correct adapter/serializer is called
 
-Move the extraction into the serializer
-
-Metadata:
-  Add an extraction for metadata
-
-Add serializeIntoHash
-
 FindMany:
   Show feature
   With custom urls show how to group
 
-========================================================
-Go through JSONSerializer, RESTSerializer
-=======================================================
-Showcase other Adapters
-=======================================================

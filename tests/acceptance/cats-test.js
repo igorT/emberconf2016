@@ -67,15 +67,32 @@ test('Relationships for the first cat', function(assert) {
   });
 });
 
-test('Correct serialization of the whole cat', function(assert) {
-  assert.expect(6);
+test('Correct serialization of the cat attributes', function(assert) {
+  assert.expect(3);
   visit('/cats');
   var firstCat;
   server.put('/cats/1', (db, request) => {
-    let savedCat = JSON.parse(request.requestBody);
+    let savedCat = JSON.parse(request.requestBody).cat;
     assert.equal(savedCat.name, 'BattleCat', 'Correctly sent the name');
     assert.equal(savedCat.age, 6, 'Correctly sent the age');
     assert.equal(savedCat.owner_name, 'Paul', 'Correctly sent the owner name');
+  });
+
+
+  andThen(function() {
+    firstCat = find('.cat-profile')[0];
+    click($('.edit', firstCat));
+  });
+  fillIn('input', 'BattleCat');
+  click('.update');
+});
+
+test('Correct serialization of the cat relationships', function(assert) {
+  assert.expect(3);
+  visit('/cats');
+  var firstCat;
+  server.put('/cats/1', (db, request) => {
+    let savedCat = JSON.parse(request.requestBody).cat;
     assert.equal(savedCat.relationships.cat_friends[0], '2', 'Correctly sent the first friend');
     assert.equal(savedCat.relationships.cat_friends[1], '3', 'Correctly sent the second friend');
     assert.equal(savedCat.relationships.best_friend, '3', 'Correctly sent the best friend');

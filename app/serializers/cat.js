@@ -17,6 +17,7 @@ export default ApplicationSerializer.extend({
 
   serialize(snapshot, options) {
     return {
+      id: snapshot.id,
       owner_name: snapshot.attr('ownerName'),
       name: snapshot.attr('name'),
       age: snapshot.attr('age'),
