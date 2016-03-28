@@ -6,9 +6,11 @@
       {{input value=cat.name class="input is-medium"}}
     </p>
     {{else}}
+    <h2 class="title is-4">
     {{#link-to 'cat' cat}}
-    <h2 class="title is-4">{{cat.name}}</h2>
+    {{cat.name}}
     {{/link-to}}
+    </h2>
     <div>owned by<h3 class="owner-name">{{cat.ownerName}}</h3></div>
     {{/if}}
     <p class="control is-grouped">
