@@ -13,22 +13,11 @@ export default DS.Adapter.extend({
   },
 
   findAll(store, type) {
-    return Ember.$.get(this.baseURLFor(type)).then((data) =>
-      {
-      let payload = data[this.keyForModelName(type.modelName)];
-      let normalized = {
-        data: payload.map((record) => ({ type: type.modelName, id: record.id, attributes: record }))
-      };
-      return normalized;
-    });
+    return Ember.$.get(this.baseURLFor(type));
   },
 
   findRecord(store, type, id){
-    return Ember.$.get(this.baseURLFor(type) + id).then((data) =>{
-      let payload = data[type.modelName];
-      let normalized = { data: { type: type.modelName, id: payload.id, attributes: payload } };
-      return normalized;
-    });
+    return Ember.$.get(this.baseURLFor(type) + id);
   },
 
   deleteRecord(store, type, snapshot) {
