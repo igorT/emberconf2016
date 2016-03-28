@@ -23,7 +23,12 @@ export default DS.Serializer.extend({
   },
 
   normalize(type, hash) {
-   return { type: type.modelName, id: hash.id, attributes: hash };
+   let normalized = { type: type.modelName, id: hash.id };
+   normalized.attributes = {};
+   type.eachAttribute(function(name, meta) {
+      normalized.attributes[name] = hash[Ember.String.underscore(name)];
+    });
+    return normalized;
   },
 
   serialize(snapshot, options) {
